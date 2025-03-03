@@ -6,6 +6,32 @@ from rest_framework import status
 from rest_framework.decorators import api_view,permission_classes
 from rest_framework.permissions import IsAuthenticated
 
+
+
+def home(request):
+    return render(request, 'index.html')
+
+
+def blog_list_page(request):
+    blogs = Blog.objects.all()  # Fetch all blogs from the database
+    return render(request, 'blog_list.html', {'blogs': blogs})  # Pass blogs to the template
+
+
+# Render the blog details page
+def blog_detail_page(request, pk):
+    blog = Blog.objects.get(id=pk)
+    return render(request, 'blog_detail.html', {'blog': blog})
+
+# Render the user profile update page
+@permission_classes([IsAuthenticated])
+def update_profile_page(request):
+    return render(request, 'update_profile.html')
+
+# Render the create blog page
+@permission_classes([IsAuthenticated])
+def create_blog_page(request):
+    return render(request, 'create_blog.html')
+
 # Create your views here.
 @api_view(["POST"])
 def register_user(request):

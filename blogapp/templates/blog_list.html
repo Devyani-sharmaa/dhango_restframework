@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #35424a;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+        .blog {
+            background: white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #e8491d;
+        }
+        .blog img {
+            max-width: 70%;
+            border-radius: 0.1px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog List</h1>
+    </header>
+    <div class="container">
+        {% for blog in blogs %}
+            <div class="blog">
+                <h2>{{ blog.title }}</h2>
+                {% if blog.featured_image %}
+                    <img src="{{ blog.featured_image.url }}" alt="Blog Image">
+                {% endif %}
+                <p>{{ blog.content }}</p>
+                <p><strong>Author:</strong> {{ blog.author }}</p>
+                <p><strong>Published on:</strong> {{ blog.created_at }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+   
