@@ -12,7 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 
 def blog_list_page(request):
     blogs = Blog.objects.all()  # Fetch all blogs from the database
-    return render(request, 'blog_list.html', {'blogs': blogs})  # Pass blogs to the template
+    return render(request, 'index.html', {'blogs': blogs})  # Pass blogs to the template
 
 
 # # Render the blog details page
